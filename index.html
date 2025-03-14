@@ -30,39 +30,46 @@
     </header>
     
     <main>
-        <section id="about">
-            <h2>¿Quién soy?</h2>
-            <p>Hola, me llamo Leslie, me gusta que me digan Les y tengo 18 años. Estoy estudiando mi primer semestre en Ingeniería en Sistemas en la Ibero Puebla.</p>
-            <img src="Yo.jpeg" alt="Leslie">
-        </section>
-
-        <section id="likes">
-            <h2>Gustos</h2>
-            <ul>
-                <li>Me gusta mucho la música, principalmente el pop y la clásica.</li>
-                <li>Amo a los animalitos, principalmente los patos.</li>
-                <li>Me gusta mucho el básquet.</li>
-                <li>Me gusta mucho leer, principalmente romance y fantasía.</li>
-            </ul>
-        </section>
-
-        <section id="skills">
-            <h2>Habilidades</h2>
-            <ul>
-                <li>Leo muy rápido y tengo muy buena comprensión (cuando me interesa algo).</li>
-                <li>Me salen bastante bien los postres.</li>
-                <li>Toco el piano y el cello.</li>
-            </ul>
-        </section>
-
-        <section id="contact">
-            <h2>Contacto</h2>
-            <p>Instagram: <a href="https://instagram.com/_leslie_pato" target="_blank">_leslie_pato</a></p>
-            <p>Número: 2229163085</p>
-            <p>Correo institucional: <a href="mailto:201831@iberopuebla.mx">201831@iberopuebla.mx</a></p>
-            <a href="https://wa.me/2229163085" class="contact-btn">Pícale aquí</a>
-        </section>
-
+        <div class="container my-5">
+            <div class="row">
+                <section id="about" class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">¿Quién soy?</h2>
+                            <p class="card-text">Hola, me llamo Leslie, me gusta que me digan Les y tengo 18 años. Estoy estudiando mi primer semestre en Ingeniería en Sistemas en la Ibero Puebla.</p>
+                            <img src="Yo.jpeg" alt="Foto de Leslie" class="img-fluid rounded">
+                        </div>
+                    </div>
+                </section>
+        
+                <section id="likes" class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">Gustos</h2>
+                            <ul class="card-text">
+                                <li>Me gusta mucho la música, principalmente el pop y la clásica.</li>
+                                <li>Amo a los animalitos, principalmente los patos.</li>
+                                <li>Me gusta mucho el básquet.</li>
+                                <li>Me gusta mucho leer, principalmente romance y fantasía.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+        
+                <section id="skills" class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">Habilidades</h2>
+                            <ul class="card-text">
+                                <li>Leo muy rápido y tengo muy buena comprensión (cuando me interesa algo).</li>
+                                <li>Me salen bastante bien los postres.</li>
+                                <li>Toco el piano y el cello.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
 
         <section id="tareas" class="py-5 bg-lightgreen">
             <div class="container">
@@ -160,3 +167,38 @@
             </div>
         </section>
         
+        <section id="contact" class="bg-light py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Contacto</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Instagram</h5>
+                                <p class="card-text"><a href="https://instagram.com/_leslie_pato" target="_blank">_leslie_pato</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Número</h5>
+                                <p class="card-text">2229163085</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Correo institucional</h5>
+                                <p class="card-text"><a href="mailto:201831@iberopuebla.mx">201831@iberopuebla.mx</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="https://wa.me/2229163085" class="btn btn-primary">Pícale aquí</a>
+                </div>
+            </div>
+
+            
