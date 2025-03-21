@@ -81,7 +81,8 @@
                             <div class="card-body">
                                 <h5 class="card-title">El primer trabajo que hice</h5>
                                 <p class="card-text">Análisis de la encuesta</p>
-                                <a href="file:///C:/Users/fyose/Downloads/Tarea_Investigaci%C3%B3n%20encuesta%20de%20Stack%20Overflow%202024_S%C3%A1nchez%20Leslie.html" target="_blank" class="btn button-primary">Ver mi primer tarea</a>
+                                <embed id="pdf1" src="Docs/Tarea_Investigación encuesta de Stack Overflow 2024_Sánchez Leslie.pdf" type="application/pdf" width="420px" height="630px" style="display:none;"/>
+                                <button onclick="mostrarPDF('pdf1')" class="btn button-primary">Ver mi primer tarea</button>
                             </div>
                         </div>
                     </div>
@@ -101,7 +102,8 @@
                             <div class="card-body">
                                 <h5 class="card-title">Investigación</h5>
                                 <p class="card-text">Este es un trabajo de investigación muy breve</p>
-                                <a href="file:///C:/Users/fyose/Downloads/Tarea.%20Investigaci%C3%B3n%20sobre%20tecnolog%C3%ADas%20en%20aplicaciones_S%C3%A1nchez%20Leslie.html" target="_blank" class="btn button-primary">Breve investigación</a>
+                                <embed id="pdf3" src="Docs/Tarea. Investigación sobre tecnologías en aplicaciones_Sánchez Leslie.pdf" type="application/pdf" width="420px" height="630px" style="display:none;">
+                                <button onclick="mostrarPDF('pdf3')" class="btn button-primary">Breve investigación</button>
                             </div>
                         </div>
                     </div>
@@ -111,13 +113,25 @@
                             <div class="card-body">
                                 <h5 class="card-title">Primer tarea en equipos (parejas)</h5>
                                 <p class="card-text">Tarea de investigación sobre la evolución de la Era Digital en los Últimos 30 Años</p>
-                                <a href="file:///C:/Users/fyose/Downloads/Investigaci%C3%B3n%20de%20la%20Era%20Digital%20(1).html" target="_blank" class="btn button-primary">Ver tareita</a>
+                                <embed id="pdf4" src="Docs/Investigación de la Era Digital (1).pdf" type="application/pdf" width="420px" height="630px" style="display:none;">
+                                <button onclick="mostrarPDF('pdf4')" class="btn button-primary">Ver tareita</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <script>
+        function mostrarPDF(id) {
+            var pdf = document.getElementById(id);
+            if (pdf.style.display === "none") {
+                pdf.style.display = "block";
+            } else {
+                pdf.style.display = "none";
+            }
+        }
+        </script>
 
         <section id="recommendations" class="py-5 bg-lightblue">
             <div class="container">
@@ -200,6 +214,5 @@
                     <a href="https://wa.me/2229163085" class="btn btn-primary">Pícale aquí</a>
                 </div>
             </div>
-
 
             
