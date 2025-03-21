@@ -71,7 +71,7 @@
             </div>
         </div>
 
-        <section id="tareas" class="py-5 bg-lightgreen">
+         <section id="tareas" class="py-5 bg-lightgreen">
             <div class="container">
                 <h2 class="text-center mb-4">Mis Tareas</h2>
                 <div class="row">
@@ -81,8 +81,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">El primer trabajo que hice</h5>
                                 <p class="card-text">Análisis de la encuesta</p>
-                                <embed id="pdf1" src="Docs/Tarea_Investigación encuesta de Stack Overflow 2024_Sánchez Leslie.pdf" type="application/pdf" width="420px" height="630px" style="display:none;"/>
-                                <button onclick="mostrarPDF('pdf1')" class="btn button-primary">Ver mi primer tarea</button>
+                                <embed src="Docs/Tarea_Investigación encuesta de Stack Overflow 2024_Sánchez Leslie.pdf" type="application/pdf" width="420px" height="630px"/>
                             </div>
                         </div>
                     </div>
@@ -102,8 +101,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Investigación</h5>
                                 <p class="card-text">Este es un trabajo de investigación muy breve</p>
-                                <embed id="pdf3" src="Docs/Tarea. Investigación sobre tecnologías en aplicaciones_Sánchez Leslie.pdf" type="application/pdf" width="420px" height="630px" style="display:none;">
-                                <button onclick="mostrarPDF('pdf3')" class="btn button-primary">Breve investigación</button>
+                                <embed src="Docs/Tarea. Investigación sobre tecnologías en aplicaciones_Sánchez Leslie.pdf" type="application/pdf" width="420px" height="630px">
                             </div>
                         </div>
                     </div>
@@ -113,25 +111,13 @@
                             <div class="card-body">
                                 <h5 class="card-title">Primer tarea en equipos (parejas)</h5>
                                 <p class="card-text">Tarea de investigación sobre la evolución de la Era Digital en los Últimos 30 Años</p>
-                                <embed id="pdf4" src="Docs/Investigación de la Era Digital (1).pdf" type="application/pdf" width="420px" height="630px" style="display:none;">
-                                <button onclick="mostrarPDF('pdf4')" class="btn button-primary">Ver tareita</button>
+                                <embed src="Docs/Investigación de la Era Digital (1).pdf" type="application/pdf" width="420px" height="630px">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <script>
-        function mostrarPDF(id) {
-            var pdf = document.getElementById(id);
-            if (pdf.style.display === "none") {
-                pdf.style.display = "block";
-            } else {
-                pdf.style.display = "none";
-            }
-        }
-        </script>
 
         <section id="recommendations" class="py-5 bg-lightblue">
             <div class="container">
