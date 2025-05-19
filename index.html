@@ -72,7 +72,7 @@
         </div>
 
 
-        <section id="tareas" class="py-5 bg-lightgreen">
+                <section id="tareas" class="py-5 bg-lightgreen">
             <div class="container">
                 <h2 class="text-center mb-4">Mis Tareas</h2>
                 <div class="row">
@@ -134,19 +134,122 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card h-100 shadow-sm border-0" style="background-color: #feffff; border-radius: 12px;">
-                        <a href="https://teachablemachine.withgoogle.com/models/3NWXqSVcQ/" target="_blank">
+                        <div class="card h-100 shadow-sm border-0" style="background-color: #feffff; border-radius: 12px;">
                             <img src="EC.png" class="card-img-top" alt="Modelo de detección de objetos" style="border-top-left-radius: 12px; border-top-right-radius: 12px;">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">Detección de objetos</h5>
-                            <p class="card-text">Estuvo muy divertido, me entretuve como dos horas</p>
-                            <p class="card-text">
-                                Haz clic en la imagen para ver el modelo en acción.
-                            </p>
+                            <div class="card-body">
+                                <h5 class="card-title">Detección de objetos</h5>
+                                <p class="card-text">Estuvo muy divertido, me entretuve como dos horas</p>
+                                <p class="card-text">
+                    <h1>Modelo de Teachable Machine</h1>
+                        La inteligencia artificial (IA) es la capacidad de las máquinas para imitar la inteligencia humana, como aprender, razonar y tomar decisiones.
+                            
+                            ¿Qué es un modelo de IA? Un modelo de IA es un algoritmo que ha sido entrenado con datos para realizar tareas específicas, como clasificar imágenes o predecir resultados.
+                            
+                            Teachable Machine: Es una herramienta de Google que permite crear modelos de IA sin necesidad de programar. En este projecto aprendemos a entrenar modelos para reconocer imágenes, sonidos o poses utilizando los datos que elijamos.
+
+                            Se entrenó un modelo de reconocimiento de imágenes con Teachable Machine para identificar clases visuales mediante la cámara. El modelo usa IA para clasificar en tiempo real lo que ve el usuario. Intenta identificar carecteristicas cercanas a las que se entrenó y haci poder darles un porcentaje de lo que cree que es. Mis clases son 3: Mano, moneda, celular. El modelo se entrena con imágenes de cada clase y luego se prueba con nuevas imágenes para evaluar su precisión.
+                                    </p>
+                                <div id="webcam-container" class="mb-2"></div>
+                                <div id="label-container"></div>
+                            </div>
                         </div>
                     </div>
+
+
+<div style="max-width: 240px; margin: auto; border: 1px solid #ccc; border-radius: 10px; padding: 15px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: space-between;">
+    <div style="text-align: center; font-weight: bold; margin-bottom: 10px;">Teachable Machine Image Model</div>
+
+    <div id="webcam-container" style="display: flex; justify-content: center; margin-bottom: 10px;"></div>
+
+    <div id="label-container" style="width: 100%;"></div>
+
+    <div style="display: flex; justify-content: center; margin-top: 15px;">
+        <button type="button" onclick="init()" style="padding: 6px 12px; border: none; background-color: #6200ea; color: white; border-radius: 5px; cursor: pointer;">
+            Start
+        </button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+<script type="text/javascript">
+    const URL = "https://teachablemachine.withgoogle.com/models/1RZ1OJAZf/";
+
+    let model, webcam, labelContainer, maxPredictions;
+
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        const flip = true;
+        webcam = new tmImage.Webcam(200, 150, flip);
+        await webcam.setup();
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        labelContainer = document.getElementById("label-container");
+        labelContainer.innerHTML = "";
+        for (let i = 0; i < maxPredictions; i++) {
+            const container = document.createElement("div");
+            container.style.marginBottom = "8px";
+
+            const label = document.createElement("div");
+            label.style.fontSize = "0.8em";
+            label.style.marginBottom = "4px";
+
+            const bar = document.createElement("div");
+            bar.style.height = "10px";
+            bar.style.background = "#e0e0e0";
+            bar.style.borderRadius = "5px";
+            bar.style.overflow = "hidden";
+
+            const fill = document.createElement("div");
+            fill.style.height = "100%";
+            fill.style.width = "0%";
+            fill.style.background = "#6200ea";
+            fill.style.transition = "width 0.3s";
+
+            bar.appendChild(fill);
+            container.appendChild(label);
+            container.appendChild(bar);
+
+            labelContainer.appendChild(container);
+        }
+
+        webcam.canvas.style.borderRadius = "8px";
+        webcam.canvas.style.width = "100%";
+        webcam.canvas.style.height = "auto";
+    }
+
+    async function loop() {
+        webcam.update();
+        await predict();
+        window.requestAnimationFrame(loop);
+    }
+
+    async function predict() {
+        const prediction = await model.predict(webcam.canvas);
+        for (let i = 0; i < maxPredictions; i++) {
+            const className = prediction[i].className;
+            const percentage = Math.round(prediction[i].probability * 100);
+            const labelDiv = labelContainer.children[i].children[0];
+            const barFill = labelContainer.children[i].children[1].children[0];
+
+            labelDiv.innerHTML = `${className}: ${percentage}%`;
+            barFill.style.width = `${percentage}%`;
+        }
+    }
+</script>
+
+
                 </div>
                 </div>
                 </div>
